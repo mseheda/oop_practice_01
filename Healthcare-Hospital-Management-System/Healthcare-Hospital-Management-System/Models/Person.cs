@@ -1,4 +1,5 @@
-namespace HealthcareHospitalManagementSystem.Abstracts
+
+namespace HealthcareHospitalManagementSystem.Models
 {
     public abstract class Person
     {
@@ -8,10 +9,10 @@ namespace HealthcareHospitalManagementSystem.Abstracts
         // Abstract method
         public abstract void DisplayInfo();
 
-        // Virtual method (will be overridden)
+        // Virtual method with an implementation
         public virtual void Work()
         {
-            Console.WriteLine($"{Name} is working.");
+            System.Console.WriteLine($"{Name} is working.");
         }
     }
 }

@@ -8,30 +8,35 @@ namespace HealthcareHospitalManagementSystem
     {
         public static void Main(string[] args)
         {
-            // Create service instances
-            DoctorService doctorService = new DoctorService();
-            PatientService patientService = new PatientService();
-            AppointmentService appointmentService = new AppointmentService();
+            // Testing the inheritance and method overrides
 
-            // Add a doctor
-            Doctor doctor1 = new Doctor { Name = "Dr. Smith", Specialization = "Cardiology", Department = "Cardio" };
-            doctorService.AddDoctor(doctor1);
+            // Create a Doctor instance (inherits from Person)
+            Doctor doctor = new Doctor
+            {
+                Name = "Dr. John Doe",
+                Age = 45,
+                Specialization = "Cardiology",
+                Department = "Cardiology"
+            };
 
-            // Add a patient
-            Patient patient1 = new Patient { Name = "John Doe", Age = 30, MedicalHistory = "None" };
-            patientService.AddPatient(patient1);
+            // Call the overridden abstract method
+            doctor.DisplayInfo();
 
-            // Schedule an appointment
-            Appointment appointment1 = new Appointment { DoctorId = doctor1.Id, PatientId = patient1.Id, AppointmentDate = DateTime.Now };
-            appointmentService.ScheduleAppointment(appointment1);
+            // Call the overridden virtual method
+            doctor.Work();
 
-            // Display doctor info
-            doctor1.DisplayInfo();  // Calls overridden method
-            doctor1.Work();         // Calls overridden Work method
+            // Simulate service usage (without database, just in-memory data)
+            IDoctorService doctorService = new DoctorService();
+            doctorService.AddDoctor(doctor);
 
-            // Retrieve and display patient info
-            var patient = patientService.GetPatientById(patient1.Id);
-            patient.DisplayInfo();   // Calls overridden method
+            Console.WriteLine("\nList of Doctors:");
+            foreach (var doc in doctorService.GetAllDoctors())
+            {
+                doc.DisplayInfo(); // Show the doctor info again from the service
+            }
+
+            // This keeps the console window open
+            Console.ReadLine(); // Press Enter to close
         }
     }
 }

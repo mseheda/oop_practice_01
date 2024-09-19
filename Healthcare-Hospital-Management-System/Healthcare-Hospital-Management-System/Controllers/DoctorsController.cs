@@ -1,6 +1,7 @@
 
 using Microsoft.AspNetCore.Mvc;
 using HealthcareHospitalManagementSystem.Models;
+using HealthcareHospitalManagementSystem.Services;
 
 namespace HealthcareHospitalManagementSystem.Controllers
 {
@@ -16,42 +17,21 @@ namespace HealthcareHospitalManagementSystem.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllDoctors()
+        public IActionResult GetDoctors()
         {
             var doctors = _doctorService.GetAllDoctors();
-            return Ok(doctors);
-        }
-
-        [HttpGet("{id}")]
-        public IActionResult GetDoctorById(int id)
-        {
-            var doctor = _doctorService.GetDoctorById(id);
-            if (doctor == null)
+            foreach (var doctor in doctors)
             {
-                return NotFound();
+                doctor.DisplayInfo(); // Call overridden method
             }
-            doctor.DisplayInfo(); // Calls the overridden method
-            return Ok(doctor);
+            return Ok(doctors);
         }
 
         [HttpPost]
         public IActionResult AddDoctor([FromBody] Doctor doctor)
         {
+            doctor.Work(); // Call overridden method
             _doctorService.AddDoctor(doctor);
-            return Ok();
-        }
-
-        [HttpPut("{id}")]
-        public IActionResult UpdateDoctor(int id, [FromBody] Doctor doctor)
-        {
-            _doctorService.UpdateDoctor(id, doctor);
-            return Ok();
-        }
-
-        [HttpDelete("{id}")]
-        public IActionResult DeleteDoctor(int id)
-        {
-            _doctorService.DeleteDoctor(id);
             return Ok();
         }
     }

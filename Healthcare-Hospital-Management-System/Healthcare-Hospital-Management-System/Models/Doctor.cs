@@ -1,5 +1,3 @@
-using HealthcareHospitalManagementSystem.Abstracts;
-using System.Xml.Linq;
 
 namespace HealthcareHospitalManagementSystem.Models
 {
@@ -11,13 +9,13 @@ namespace HealthcareHospitalManagementSystem.Models
         // Override the abstract method from Person
         public override void DisplayInfo()
         {
-            Console.WriteLine($"Doctor {Name}, Specialization: {Specialization}, Department: {Department}");
+            System.Console.WriteLine($"Doctor {Name}, Age: {Age}, Specialization: {Specialization}, Department: {Department}");
         }
 
         // Override the virtual method from Person
         public override void Work()
         {
-            Console.WriteLine($"Doctor {Name} is seeing patients.");
+            System.Console.WriteLine($"Doctor {Name} is working with patients.");
         }
     }
 }

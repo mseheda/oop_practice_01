@@ -37,11 +37,11 @@ The following objectives guide the development of the system:
 ## Installation Instructions
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/healthcare-management-system.git
+    git clone https://github.com/mseheda/oop_practice_01.git
     ```
 2. Navigate to the project directory:
     ```bash
-    cd healthcare-management-system
+    cd oop_practice_01
     ```
 3. Build and run the project:
     ```bash

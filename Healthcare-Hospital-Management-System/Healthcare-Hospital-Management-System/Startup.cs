@@ -12,7 +12,7 @@ namespace HealthcareHospitalManagementSystem
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSwaggerGen(); // For API documentation
+            services.AddSwaggerGen();
             services.AddSingleton<IDoctorService, DoctorService>();
         }
 

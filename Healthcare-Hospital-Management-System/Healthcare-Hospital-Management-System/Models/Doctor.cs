@@ -1,21 +1,18 @@
-
 namespace HealthcareHospitalManagementSystem.Models
 {
     public class Doctor : Person
     {
         public string Specialization { get; set; }
         public string Department { get; set; }
-
-        // Override the abstract method from Person
-        public override void DisplayInfo()
+        
+        public override string DisplayInfo()
         {
-            System.Console.WriteLine($"Doctor {Name}, Age: {Age}, Specialization: {Specialization}, Department: {Department}");
+            return $"Doctor {Name}, Age: {Age}, Specialization: {Specialization}, Department: {Department}";
         }
-
-        // Override the virtual method from Person
-        public override void Work()
+        
+        public override string Work()
         {
-            System.Console.WriteLine($"Doctor {Name} is working with patients.");
+            return $"Doctor {Name} is working with patients.";
         }
     }
 }

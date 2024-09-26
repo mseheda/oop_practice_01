@@ -1,4 +1,4 @@
-
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using HealthcareHospitalManagementSystem.Models;
 using HealthcareHospitalManagementSystem.Services;
@@ -6,7 +6,7 @@ using HealthcareHospitalManagementSystem.Services;
 namespace HealthcareHospitalManagementSystem.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class DoctorsController : ControllerBase
     {
         private readonly IDoctorService _doctorService;
@@ -17,20 +17,14 @@ namespace HealthcareHospitalManagementSystem.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetDoctors()
+        public ActionResult<List<Doctor>> GetAllDoctors()
         {
-            var doctors = _doctorService.GetAllDoctors();
-            foreach (var doctor in doctors)
-            {
-                doctor.DisplayInfo(); // Call overridden method
-            }
-            return Ok(doctors);
+            return _doctorService.GetAllDoctors();
         }
 
         [HttpPost]
-        public IActionResult AddDoctor([FromBody] Doctor doctor)
+        public ActionResult AddDoctor(Doctor doctor)
         {
-            doctor.Work(); // Call overridden method
             _doctorService.AddDoctor(doctor);
             return Ok();
         }

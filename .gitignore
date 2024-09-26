@@ -1,3 +1,45 @@
+# Ignore Visual Studio temporary files, build results, and
+# include directories related to the .NET build process
 .vs/
 .obj/
 .bin/
+# Ignore build results
+bin/
+obj/
+Debug/
+Release/
+
+# User-specific files
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Include if using Rider IDE
+.idea/
+
+# Windows shortcuts
+*.lnk
+
+# Ignore .NET Core tooling
+.vscode/
+
+# Ignore .NET Core global tools
+*.dotnet/
+
+# Rider directories
+.idea/

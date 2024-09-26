@@ -8,6 +8,7 @@ namespace HealthcareHospitalManagementSystem
     {
         public static void Main(string[] args)
         {
+            CreateHostBuilder(args).Build().Run();
             Doctor doctor = new Doctor
             {
                 Name = "Dr. John Doe",
@@ -31,5 +32,11 @@ namespace HealthcareHospitalManagementSystem
             
             Console.ReadLine();
         }
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
     }
 }

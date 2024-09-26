@@ -1,4 +1,3 @@
-
 using HealthcareHospitalManagementSystem.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,9 +10,13 @@ namespace HealthcareHospitalManagementSystem
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.PropertyNamingPolicy = null;
+                options.JsonSerializerOptions.DictionaryKeyPolicy = null;
+            });
             services.AddSwaggerGen();
-            services.AddSingleton<IDoctorService, DoctorService>();
+            services.AddScoped<IDoctorService, DoctorService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -21,6 +24,10 @@ namespace HealthcareHospitalManagementSystem
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseHttpsRedirection();
             }
 
             app.UseSwagger();

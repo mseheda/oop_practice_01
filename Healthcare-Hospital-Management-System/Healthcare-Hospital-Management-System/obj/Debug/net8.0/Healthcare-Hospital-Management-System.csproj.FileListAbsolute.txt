@@ -29,3 +29,5 @@ C:\Users\38097\Documents\GitHub\oop_practice_01\Healthcare-Hospital-Management-S
 C:\Users\38097\Documents\GitHub\oop_practice_01\Healthcare-Hospital-Management-System\Healthcare-Hospital-Management-System\obj\Debug\net8.0\refint\Healthcare-Hospital-Management-System.dll
 C:\Users\38097\Documents\GitHub\oop_practice_01\Healthcare-Hospital-Management-System\Healthcare-Hospital-Management-System\obj\Debug\net8.0\Healthcare-Hospital-Management-System.pdb
 C:\Users\38097\Documents\GitHub\oop_practice_01\Healthcare-Hospital-Management-System\Healthcare-Hospital-Management-System\obj\Debug\net8.0\Healthcare-Hospital-Management-System.genruntimeconfig.cache
+C:\Users\38097\Documents\GitHub\oop_practice_01\Healthcare-Hospital-Management-System\Healthcare-Hospital-Management-System\bin\Debug\net8.0\Healthcare-Hospital-Management-System.pdb
+C:\Users\38097\Documents\GitHub\oop_practice_01\Healthcare-Hospital-Management-System\Healthcare-Hospital-Management-System\obj\Debug\net8.0\ref\Healthcare-Hospital-Management-System.dll

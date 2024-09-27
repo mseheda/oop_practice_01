@@ -26,6 +26,26 @@ namespace HealthcareHospitalManagementSystem.Controllers
         public ActionResult AddDoctor(Doctor doctor)
         {
             _doctorService.AddDoctor(doctor);
+            
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), $"{DateTime.UtcNow.Ticks}_transaction.log");
+            DoctorService service = new DoctorService(filePath);
+
+            try
+            {
+                service.LogTransaction($"Doctor {doctor.Name} added");
+            }
+            catch (ObjectDisposedException)
+            {
+                return StatusCode(500, "Error logging transaction");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                service.Dispose();
+            }
             return Ok();
         }
     }

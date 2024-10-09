@@ -19,8 +19,7 @@ public class DoctorsController : ControllerBase
     [HttpPost]
     public ActionResult AddDoctor(Doctor doctor)
     {
-        var filePath = Path.Combine(Directory.GetCurrentDirectory(), $"{DateTime.UtcNow.Ticks}_transaction.log");
-        DoctorService service = new DoctorService(filePath, _logger);
+        DoctorService service = new DoctorService(_logger);
         try
         {
             service.AddDoctor(doctor);
@@ -33,10 +32,6 @@ public class DoctorsController : ControllerBase
         catch (Exception ex)
         {
             return StatusCode(500, ex.Message);
-        }
-        finally
-        {
-            service.Dispose();
         }
     }
 

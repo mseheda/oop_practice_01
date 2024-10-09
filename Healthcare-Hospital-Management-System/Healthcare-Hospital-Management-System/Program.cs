@@ -9,6 +9,10 @@ builder.Services.AddScoped<IDoctorService, DoctorService>();
 
 builder.Services.AddScoped<Logger>();
 
+builder.Services.AddControllers();
+
+builder.Services.AddAuthorization();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

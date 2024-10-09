@@ -1,11 +1,14 @@
 using System.Collections.Generic;
+using HealthcareHospitalManagementSystem.Services;
 using HealthcareHospitalManagementSystem.Models;
 
 namespace HealthcareHospitalManagementSystem.Services
 {
     public interface IDoctorService
     {
-        List<Doctor> GetAllDoctors();
         void AddDoctor(Doctor doctor);
+        void LogTransaction(string logMessage);
+        IEnumerable<Doctor> GetDoctors();
+        void Dispose();
     }
 }

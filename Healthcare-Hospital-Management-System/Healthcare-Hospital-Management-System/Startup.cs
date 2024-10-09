@@ -1,8 +1,4 @@
 using HealthcareHospitalManagementSystem.Services;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace HealthcareHospitalManagementSystem
 {
@@ -17,7 +13,7 @@ namespace HealthcareHospitalManagementSystem
             });
 
             services.AddSwaggerGen();
-            services.AddSingleton<IDoctorService, DoctorService>();
+            services.AddScoped<IDoctorService, DoctorService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -7,6 +7,7 @@ public class DoctorService : IDoctorService
     private List<Doctor> _doctors;
     private readonly Logger _logger;
     private const int MaxDoctors = 50;
+    public static int TotalDoctorsAdded { get; private set; } = 0;
 
     public DoctorService(Logger logger)
     {
@@ -24,7 +25,15 @@ public class DoctorService : IDoctorService
             throw new InvalidOperationException(message);
         }
 
+        if (!ValidateDoctor(doctor))
+        {
+            message = $"Cannot add doctor {doctor.Name}. Invalid doctor information.";
+            _logger.LogError(message);
+            throw new InvalidOperationException(message);
+        }
+
         _doctors.Add(doctor);
+        TotalDoctorsAdded++;
         message = $"Doctor {doctor.Name} added";
         _logger.Log(message);
     }
@@ -32,5 +41,10 @@ public class DoctorService : IDoctorService
     public List<Doctor> GetDoctors()
     {
         return _doctors;
+    }
+
+    public static bool ValidateDoctor(Doctor doctor)
+    {
+        return !string.IsNullOrWhiteSpace(doctor.Name) && !string.IsNullOrWhiteSpace(doctor.Specialization);
     }
 }

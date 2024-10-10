@@ -7,6 +7,6 @@ namespace HealthcareHospitalManagementSystem.Services
     public interface IDoctorService
     {
         void AddDoctor(Doctor doctor);
-        IEnumerable<Doctor> GetDoctors();
+        List<Doctor> GetDoctors();
     }
 }

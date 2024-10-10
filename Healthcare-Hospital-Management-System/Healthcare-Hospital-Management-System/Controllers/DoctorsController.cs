@@ -2,6 +2,8 @@ using HealthcareHospitalManagementSystem.Models;
 using HealthcareHospitalManagementSystem.Services;
 using HealthcareHospitalManagementSystem.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -19,10 +21,9 @@ public class DoctorsController : ControllerBase
     [HttpPost]
     public ActionResult AddDoctor(Doctor doctor)
     {
-        DoctorService service = new DoctorService(_logger);
         try
         {
-            service.AddDoctor(doctor);
+            _doctorService.AddDoctor(doctor);
             return Ok();
         }
         catch (ObjectDisposedException)
@@ -35,9 +36,8 @@ public class DoctorsController : ControllerBase
         }
     }
 
-
     [HttpGet]
-    public ActionResult<IEnumerable<Doctor>> GetDoctors()
+    public ActionResult<List<Doctor>> GetDoctors()
     {
         try
         {

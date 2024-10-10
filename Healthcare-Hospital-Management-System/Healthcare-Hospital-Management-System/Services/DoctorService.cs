@@ -4,10 +4,9 @@ using HealthcareHospitalManagementSystem.Infrastructure;
 
 public class DoctorService : IDoctorService
 {
-    private const int MaxDoctors = 2;
-
     private List<Doctor> _doctors;
     private readonly Logger _logger;
+    private const int MaxDoctors = 50;
 
     public DoctorService(Logger logger)
     {
@@ -15,17 +14,12 @@ public class DoctorService : IDoctorService
         _logger = logger;
     }
 
-   public static int GetMaxDoctors()
-    {
-        return MaxDoctors;
-    }
-
     public void AddDoctor(Doctor doctor)
     {
         string message;
         if (_doctors.Count >= MaxDoctors)
         {
-            message = "Cannot add doctor. Maximum number of doctors reached.";
+            message = $"Cannot add doctor {doctor.Name}. Maximum number of doctors reached.";
             _logger.LogError(message);
             throw new InvalidOperationException(message);
         }
